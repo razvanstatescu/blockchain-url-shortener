@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useContext, useEffect } from 'react';
 
 import contractAddress from '../../contracts/contract-address.json';
@@ -38,7 +39,13 @@ const MetaMask = () => {
     enableEth();
   }, []);
 
-  return <></>;
+  return (
+    <>
+      <Head>
+        <title>URL Shortener made on the Ethereum Blockchain</title>
+      </Head>
+    </>
+  );
 };
 
 export default MetaMask;

@@ -94,12 +94,17 @@ export default function Home() {
   const shortenUrl = async () => {
     if (!isValidUrl(url)) {
       alert("Please input a valid URL (including the protocol http(s)).");
+      return;
     }
     setShortUrl(null);
     setLoading(true);
     _urlExternal = url;
     _addressExternal = account;
-    await contract.shortenLink(url);
+    try {
+      await contract.shortenLink(url);
+    } catch (e) {
+      setLoading(false);
+    }
   };
 
   return (
